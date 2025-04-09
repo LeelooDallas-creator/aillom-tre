@@ -4,8 +4,11 @@
 
 body {
   margin: 0;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  background-color: #d0ecff;
+  font-family: 'Quicksand', sans-serif;
+  background-image: url(./assets/garlic.jpg);
+  background-size: cover;           
+  background-position: center;      
+  background-repeat: no-repeat;     
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +20,7 @@ body {
   text-align: center;
   padding: 2rem;
   border-radius: 1.5rem;
-  background-color: #f0f8ff;
+  background-color: white;
   box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.05);
   width: 90%;
   max-width: 40rem;
