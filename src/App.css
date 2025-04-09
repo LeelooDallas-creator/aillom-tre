@@ -1,3 +1,7 @@
+:root {
+  --garlic-color: #4da6ff;
+}
+
 body {
   margin: 0;
   font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -6,41 +10,83 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  color: #1f3b57;
 }
 
 .container {
   text-align: center;
   padding: 2rem;
-  border-radius: 20px;
-  background-color: white;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  border-radius: 1.5rem;
+  background-color: #f0f8ff;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.05);
   width: 90%;
-  max-width: 500px;
+  max-width: 40rem;
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.gauge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.horizontal-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  height: 1rem;
+  margin: 2rem 0;
+  border-radius: 1rem;
+  background: var(--slider-bg);
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.horizontal-slider::-webkit-slider-runnable-track {
+  height: 1rem;
+  background: transparent;
+  border-radius: 1rem;
+}
+
+.horizontal-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background: var(--garlic-color);
+  border: none;
+  margin-top: -0.5rem; /* pour centrer le thumb */
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.horizontal-slider::-moz-range-thumb {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background: var(--garlic-color);
+  border: none;
+  cursor: pointer;
 }
 
 .face {
-  font-size: 5rem;
-  margin: 1rem 0;
+  font-size: 4rem;
+  margin: 0 0 1rem;
 }
 
 .label {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-input[type="range"] {
-  width: 100%;
   margin-bottom: 1.5rem;
 }
 
 button {
-  background-color: #49c572;
+  background-color: #4da6ff;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -51,11 +97,12 @@ button {
 }
 
 button:hover {
-  background-color: #3aaa5e;
+  background-color: #3399ff;
 }
 
 .ready-message {
   margin-top: 1rem;
   color: #2f7e3e;
   font-weight: bold;
+  font-size: 1rem;
 }
