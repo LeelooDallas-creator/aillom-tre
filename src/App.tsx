@@ -1,22 +1,20 @@
-import { useState, useEffect, ChangeEvent } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
-const getFace = (value: number): string => {
-  if (value < 30) return "😊"
-  if (value < 70) return "😐"
-  return "😭"
+import happyGarlic from './assets/happy-garlic.webp'
+import mehGarlic from './assets/meh-garlic.webp'
+import cryingGarlic from './assets/crying-garlic.webp'
+
+const getGarlicImage = (value: number): string => {
+  if (value < 30) return happyGarlic
+  if (value < 70) return mehGarlic
+  return cryingGarlic
 }
 
 const getLabel = (value: number): string => {
   if (value < 30) return "ça vail bien"
-  if (value < 70) return "c'aillé !"
+  if (value < 70) return "aillé !"
   return "ail ail ail"
-}
-
-const getColor = (value: number): string => {
-  if (value < 30) return '#4da6ff' // bleu
-  if (value < 70) return '#ffc107' // jaune
-  return '#ff4d4d' // rouge
 }
 
 function App() {
@@ -27,44 +25,50 @@ function App() {
 
   const [ready, setReady] = useState<boolean>(false)
 
+  const getSliderBackground = (value: number): string => {
+    let color = '#6ec2a6' // vert par défaut
+    if (value >= 70) color = '#e74c3c' // rouge
+    else if (value >= 30) color = '#ffc857' // jaune
+  
+    return `linear-gradient(to right, ${color} ${value}%, #ccc ${value}%)`
+  }
+  
+
   useEffect(() => {
     localStorage.setItem('garlicLevel', value.toString())
-
-    const percent = value
-    const color = getColor(value)
-    const gradient = `linear-gradient(to right, ${color} ${percent}%, #e0e0e0 ${percent}%)`
-
-    // Mise à jour dynamique du style de la jauge
-    document.documentElement.style.setProperty('--garlic-color', color)
-    document.documentElement.style.setProperty('--slider-bg', gradient)
   }, [value])
-
-  const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(e.target.value))
-  }
 
   return (
     <div className="container">
       <h1>l’aillomètre d’Antrain</h1>
 
-      <div className="gauge-container">
-        <input
-          type="range"
-          min="0"
-          max="100"
-          value={value}
-          onChange={handleSliderChange}
-          className="horizontal-slider"
-        />
+      <img
+        key={getGarlicImage(value)} // ← ceci force une transition entre images
+        src={getGarlicImage(value)}
+        alt="gousse d'ail expressive"
+        className="garlic-image"
+      />
 
-        <div className="face">{getFace(value)}</div>
+      <div className="label">{getLabel(value)}</div>
 
-        <div className="label">{getLabel(value)}</div>
-      </div>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value={value}
+        onChange={(e) => setValue(Number(e.target.value))}
+        className="slider"
+        style={{ background: getSliderBackground(value) }}
+      />
+      <button onClick={() => setReady(true)}>
+        l’aillomètre est en place
+      </button>
 
-      <button onClick={() => setReady(true)}>l’aillomètre est en place</button>
-
-      {ready && <div className="ready-message">L’aillomètre est actif ! 🌱</div>}
+      {ready && (
+        <div className="ready-message">
+          L’aillomètre est actif ! 🌱
+        </div>
+      )}
     </div>
   )
 }

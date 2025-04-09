@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2020",                       // Version JS ciblée
+    "module": "commonjs",                     // Utilisé par Node.js
+    "rootDir": "src",                         // Racine des sources
+    "outDir": "dist",                         // Dossier de build
+    "esModuleInterop": true,                  // Pour importer express, etc.
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,                           // Typage strict
+    "skipLibCheck": true                      // Ignore les types de lib externes
+  },
+  "include": ["src", "assets"],                         // Inclut tous les fichiers dans src/
+  "exclude": ["node_modules", "dist"]         // Ignore les dossiers inutiles
+}
