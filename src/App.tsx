@@ -18,7 +18,7 @@ const getFaceImage = (value: number) => {
 }
 
 const getLabel = (value: number) => {
-  if (value < 30) return 'ça vail bin'
+  if (value < 30) return 'ça vail bien'
   if (value < 70) return 'aillé !'
   return 'ail ail ail'
 }
@@ -64,7 +64,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>l’aillomètrre d’Antrain</h1>
+      <h1>l’aillomètre d’Antrain</h1>
 
       <img src={getFaceImage(value)} className="garlic-face" alt="emoji d'ail" />
 
