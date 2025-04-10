@@ -9,15 +9,15 @@ const port = 3001;
 app.use(cors());
 app.use(express.json());
 
-// Chemin vers le fichier JSON de stockage des valeurs d'ail
-const garlicFilePath = path.join(__dirname, 'garlicValues.json');
+// Chemin vers le fichier JSON de stockage
+const garlicFilePath = path.join(__dirname, "garlicValues.json");
 
-// Fonction pour lire les valeurs du fichier
+// Fonction pour lire les valeurs depuis le fichier
 const readGarlicValues = (): number[] => {
   if (!fs.existsSync(garlicFilePath)) {
-    fs.writeFileSync(garlicFilePath, JSON.stringify([])); // Créer le fichier s'il n'existe pas
+    fs.writeFileSync(garlicFilePath, JSON.stringify([]));
   }
-  const data = fs.readFileSync(garlicFilePath, 'utf8');
+  const data = fs.readFileSync(garlicFilePath, "utf8");
   return JSON.parse(data);
 };
 
@@ -35,7 +35,7 @@ app.post("/submit", (req, res) => {
     writeGarlicValues(garlicValues);
     res.status(200).json({ message: "Valeur enregistrée." });
   } else {
-    res.status(400).json({ error: "Valeur invalide." });
+    res.status(400).json({ error: "Valeur invalide. Elle doit être comprise entre 0 et 100." });
   }
 });
 
@@ -48,5 +48,5 @@ app.get("/average", (_req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Aillomètre backend lancé sur http://localhost:${port}`);
+  console.log(`✅ Aillomètre backend lancé sur http://localhost:${port}`);
 });

@@ -51,31 +51,48 @@ button:hover {
 }
 
 .slider {
-  width: 60vw;
-  max-width: 400px;
-  margin: 1rem auto;
-  display: block;
-  -webkit-appearance: none;
-  height: 10px;
-  border-radius: 5px;
-  outline: none;
-  background: #ccc;
-  transition: background 0.5s ease-in-out;
-  
-}
+    width: 80%;
+    margin: 1rem auto;
+    display: block;
+    height: 1rem;
+    border-radius: 1rem;
+    transition: background 0.3s ease;
+  }
 
 /* Couleurs selon l'état */
-.slider.low {
-  background: linear-gradient(to right, #6ec2a6 0%, #6ec2a6 100%);
+/* Track de la jauge */
+input[type="range"].low::-webkit-slider-runnable-track {
+  background: #98FF98;
+}
+input[type="range"].mid::-webkit-slider-runnable-track {
+  background: #ffc857;
+}
+input[type="range"].high::-webkit-slider-runnable-track {
+  background: #e74c3c;
 }
 
-.slider.mid {
-  background: linear-gradient(to right, #ffc857 0%, #ffc857 100%);
+input[type="range"].low::-moz-range-track {
+  background: #98FF98;
+}
+input[type="range"].mid::-moz-range-track {
+  background: #ffc857;
+}
+input[type="range"].high::-moz-range-track {
+  background: #e74c3c;
 }
 
-.slider.high {
-  background: linear-gradient(to right, #e74c3c 0%, #e74c3c 100%);
+/* Transition douce pour la track */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 1rem;
+  border-radius: 1rem;
+  transition: background 0.4s ease-in-out;
 }
+input[type="range"]::-moz-range-track {
+  height: 1rem;
+  border-radius: 1rem;
+  transition: background 0.4s ease-in-out;
+}
+
 
 /* Curseur */
 .slider::-webkit-slider-thumb {
@@ -87,7 +104,7 @@ button:hover {
   background: white;
   border: 2px solid #1f3b57;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .slider::-moz-range-thumb {
@@ -106,4 +123,10 @@ button:hover {
   margin-bottom: 1rem;
   transition: opacity 0.5s ease-in-out;
 }
-
+.garlic-face {
+  width: 20vw;
+  max-width: 200px;
+  transition: all 0.5s ease;
+  margin: 1rem auto;
+  display: block;
+}
